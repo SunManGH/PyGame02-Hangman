@@ -29,6 +29,7 @@ word_list = [
 'haunt',
 ]
 theWord = random.choice(word_list)
+lenOfWorld = len(theWord)
 print(theWord)
 
 # theWord = 'W e l c o m e'
@@ -50,7 +51,6 @@ def format_my_text(myText, fontName: str = 'Century',fontSize: int = 25,fontColo
 tried = False
 wrongLetter = False
 imageNo = 1
-display_word = ""
 
 # Set Labels
 Heading_Label = format_my_text('HANGMAN',fontSize=50)
@@ -62,16 +62,14 @@ enteredWrongLetter = format_my_text(f'Incorrect letter. Please any other letter'
 
 # Draw The Word
 def DrawTheWord():
-    global lives
-    global display_word
-    if lives > 0:
-        for letter in theWord:
-            if letter in guessed:
-                display_word += letter+' '
-            else:
-                display_word += '_ '
+    display_word = ""
+    for letter in theWord:
+        if letter in guessed:
+            display_word += letter+' '
+        else:
+            display_word += '_ '
             
-    Word_Label = format_my_text(display_word,fontSize=100)
+    Word_Label = format_my_text(display_word,fontSize=80)
     screen.blit(Word_Label,(200,300))
 
 # display Name,Tries, Title
